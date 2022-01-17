@@ -18,19 +18,6 @@ public class TransferController {
     @Autowired
     private TransferService transferService;
 
-    @GetMapping("{fromId}/{toId}/{amount}")
-    public TransferResponse transfer(@PathVariable("fromId") Long fromAccountId,
-                                     @PathVariable("toId") Long toAccountId,
-                                     @PathVariable("amount") BigDecimal amount){
-
-        TransferEntity transferEntity = TransferEntity.builder()
-                .fromAccountId(fromAccountId)
-                .toAccountId(toAccountId)
-                .amount(amount).build();
-
-        return doTransfer(transferEntity);
-    }
-
     @PostMapping()
     public TransferResponse transfer(@RequestBody TransferRequest transferRequest){
 
